@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Output files
-.PAP/articles.json
+.LearningScrapy/articles.json
