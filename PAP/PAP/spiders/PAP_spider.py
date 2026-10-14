@@ -46,7 +46,7 @@ class PAPSpider(scrapy.Spider):
             "description": response.css("p.field--name-field-lead::text").get(),
             "date": response.css("div.articleInfo div.date::text").get(),
             "updated": response.css("div.articleInfo div.actualDate::text").get(),
-            "content": "\n\n".join(response.css("article#article p::text").getall()) # joins all the content into a single string with double newlines between the <p> elements
+            "content": " ".join(response.css("article#article p::text").getall()) # joins all the content into a single string with double newlines between the <p> elements
         }
 
         # find links inside current article and repeat the process recursively:
