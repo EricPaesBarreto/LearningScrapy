@@ -1,7 +1,7 @@
 import scrapy
 
-class ArticlesSpider(scrapy.Spider):
-    name = "articles"
+class PAPSpider(scrapy.Spider):
+    name = "pap"
 
     allowed_domains = ["pap.pl"]
     start_urls = ["https://www.pap.pl/"]
@@ -42,7 +42,7 @@ class ArticlesSpider(scrapy.Spider):
 
         # yield the elements from the article page, which can be stored as a file later: (stored as a dict by default)
         yield{
-            "title": response.css("h1::text").get(),
+            "title": response.css("h1.title::text").get(),
             "description": response.css("p.field--name-field-lead::text").get(),
             "date": response.css("div.articleInfo div.date::text").get(),
             "updated": response.css("div.articleInfo div.actualDate::text").get(),
