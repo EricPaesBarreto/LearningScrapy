@@ -19,7 +19,7 @@ ADDONS = {}
 USER_AGENT = "" # PAP (+ericbarreto.researcher@gmail.com) doesn't work
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Concurrency and throttling settings
 #CONCURRENT_REQUESTS = 16

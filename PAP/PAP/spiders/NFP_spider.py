@@ -1,7 +1,7 @@
 import scrapy
 
-class ArticlesSpider(scrapy.Spider):
-    name = "articles"
+class NFPSpider(scrapy.Spider):
+    name = "nfp"
 
     allowed_domains = ["notesfrompoland.com"]
     start_urls = ["https://notesfrompoland.com/category/news/page/1/"]
