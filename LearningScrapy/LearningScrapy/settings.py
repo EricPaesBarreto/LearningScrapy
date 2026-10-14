@@ -1,4 +1,4 @@
-# Scrapy settings for PAP project
+# Scrapy settings for LearningScrapy project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,16 +7,23 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "PAP"
+# For Firefox driver 
+from shutil import which
+  
+SELENIUM_DRIVER_NAME = 'firefox'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+SELENIUM_DRIVER_ARGUMENTS=['--headless'] 
 
-SPIDER_MODULES = ["PAP.spiders"]
-NEWSPIDER_MODULE = "PAP.spiders"
+BOT_NAME = "LearningScrapy"
+
+SPIDER_MODULES = ["LearningScrapy.spiders"]
+NEWSPIDER_MODULE = "LearningScrapy.spiders"
 
 ADDONS = {}
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = "" # PAP (+ericbarreto.researcher@gmail.com) doesn't work
+USER_AGENT = "" # LearningScrapy (+ericbarreto.researcher@gmail.com) doesn't work
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -41,13 +48,13 @@ DOWNLOAD_DELAY = 1
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "PAP.middlewares.PapSpiderMiddleware": 543,
+#    "LearningScrapy.middlewares.LearningScrapySpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "PAP.middlewares.PapDownloaderMiddleware": 543,
+#    "LearningScrapy.middlewares.LearningScrapyDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -59,7 +66,7 @@ DOWNLOAD_DELAY = 1
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "PAP.pipelines.PapPipeline": 300,
+#    "LearningScrapy.pipelines.LearningScrapyPipeline": 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
