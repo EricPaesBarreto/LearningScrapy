@@ -1,4 +1,5 @@
 import scrapy
+from scrapy_selenium4 import SeleniumRequest
 
 class PAPSpider(scrapy.Spider):
     name = "pap"
@@ -15,7 +16,7 @@ class PAPSpider(scrapy.Spider):
     async def start(self):
         # this is where the spider gets the request
         for url in self.start_urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+            yield SeleniumRequest(url=url, callback=self.parse, wait_time=3, screenshot=True) # wait for 3 seconds, take screenshot
 
     def parse(self, response):
         # callback from start takes us to this function, each callback takes us to a new function we can define

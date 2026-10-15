@@ -1207,16 +1207,16 @@ wheels = [
 ]
 
 [[package]]
-name = "scrapy-selenium"
-version = "0.0.7"
+name = "scrapy-selenium4"
+version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "scrapy" },
     { name = "selenium" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6e/36/b14b771d9238c054cc691c390c0d2c037436a3f3cbcb6de26c1be2ca8e2c/scrapy-selenium-0.0.7.tar.gz", hash = "sha256:51f809802a1f62ed852cfe2d2ed49f6141058cc5254ed4b448d2ffe6f7a1b6e9", size = 5505, upload-time = "2019-01-24T21:40:19.072Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a5/ea/0ce51827afab63c93d21e0e18dcf8f0b01ef23bab273e1bc09659ae5e281/scrapy_selenium4-1.0.0.tar.gz", hash = "sha256:70e7c6caf3d7d4f9b27546e2e5a23371ab74b424fba7d0b12e6d037ed0827743", size = 7360, upload-time = "2024-08-09T19:54:14.203Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2d/8f/066607f29d4b351c9dbb10d86f580d2d2dde2f24f7c96427dc681b14e741/scrapy_selenium-0.0.7-py3-none-any.whl", hash = "sha256:70766315c7970b12a142e1b7a9f43ffb3ef1260891811062ec9dd46a665d935a", size = 6723, upload-time = "2019-01-24T21:40:17.919Z" },
+    { url = "https://files.pythonhosted.org/packages/16/12/a176ff14e1c9632c13f2046ab272c5709aae87d08688c1722828eb564af9/scrapy_selenium4-1.0.0-py2.py3-none-any.whl", hash = "sha256:e02d773ae4fc6462436c2adb1b55852688eaaecab9dce7cca5e1df508f4639fa", size = 5726, upload-time = "2024-08-09T19:54:12.86Z" },
 ]
 
 [[package]]
@@ -1226,14 +1226,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "scrapy" },
     { name = "scrapy-impersonate" },
-    { name = "scrapy-selenium" },
+    { name = "scrapy-selenium4" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "scrapy", specifier = ">=2.19.0" },
     { name = "scrapy-impersonate", specifier = ">=1.9.0" },
-    { name = "scrapy-selenium", specifier = ">=0.0.7" },
+    { name = "scrapy-selenium4", specifier = ">=1.0.0" },
 ]
 
 [[package]]

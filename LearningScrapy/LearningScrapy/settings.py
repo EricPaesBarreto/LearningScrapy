@@ -7,14 +7,8 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-# For Firefox driver 
-from shutil import which
-  
-SELENIUM_DRIVER_NAME = 'firefox'
-SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
-SELENIUM_DRIVER_ARGUMENTS=['--headless'] 
 
-BOT_NAME = "LearningScrapy"
+# BOT_NAME = "LearningScrapy"
 
 SPIDER_MODULES = ["LearningScrapy.spiders"]
 NEWSPIDER_MODULE = "LearningScrapy.spiders"
@@ -23,10 +17,10 @@ ADDONS = {}
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = "" # LearningScrapy (+ericbarreto.researcher@gmail.com) doesn't work
+# USER_AGENT = ""
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+# ROBOTSTXT_OBEY = True
 
 # Concurrency and throttling settings
 #CONCURRENT_REQUESTS = 16
@@ -91,9 +85,19 @@ DOWNLOAD_DELAY = 1
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
-FEED_EXPORT_ENCODING = "utf-8"
+# FEED_EXPORT_ENCODING = "utf-8"
 
 # Custom settings:
+
+# basic settings
+
+BOT_NAME = "LearningScrapy"
+
+USER_AGENT = "" # LearningScrapy (+ericbarreto.researcher@gmail.com) doesn't work
+
+ROBOTSTXT_OBEY = False
+
+# output settings
 
 # this determines how the output is formatted and saved (json, utf8, overwrite existing file)
 FEEDS = {
@@ -107,3 +111,18 @@ DOWNLOAD_HANDLERS = {
     "http": "scrapy_impersonate.ImpersonateDownloadHandler",
     "https": "scrapy_impersonate.ImpersonateDownloadHandler",
 }
+
+## settings.py
+
+# selenium settings
+
+# For Firefox driver 
+from shutil import which
+  
+SELENIUM_DRIVER_NAME = 'firefox'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+SELENIUM_DRIVER_ARGUMENTS=['--headless']  
+  
+DOWNLOADER_MIDDLEWARES = {
+     'scrapy_selenium.SeleniumMiddleware': 800
+     }
