@@ -10,15 +10,20 @@ class NFPSpider(scrapy.Spider):
         "CLOSESPIDER_ITEMCOUNT": 1,      # stop the spider after scraping 1000 items (double check this)!!!!!!!!!!!!!!!
         "DOWNLOAD_DELAY": 1,              # delay between download requests --> may help to not get blocked by the server
         "DEPTH_PRIORITY": 1,                # prioritize depth over breadth when crawling
+        "FEEDS": {
+            "outputs/NFP_articles.json": {
+                "format": "json",
+                "encoding": "utf-8",
+                "overwrite": True,
+            }
+        }
     }
 
 
     async def start(self):
         # this is where the spider gets the request
         for url in self.start_urls:
-            yield scrapy.Request(url=url, 
-                                 meta={"impersonate": "chrome131"}, # some sites have bot protection, so we need to impersonate a browser to get the content :/  --> (scrapy-impersonate package)
-                                 callback=self.parse)
+            yield scrapy.Request(url=url, callback=self.parse)
 
             
     def parse(self, response):
@@ -42,26 +47,26 @@ class NFPSpider(scrapy.Spider):
             next_page = response.css("a.nextpostslink::attr(href)").get()   # get the next page link
             yield response.follow(next_page, callback=self.crawl_articles)  # follow the next page link and crawl articles
 
-    def parse_article(self, response):
+    def parse_article(self, article): # response = article element
         # this is called by crawl_articles when an article link is found, the following is yielded from each article:
 
         # yield the elements from the article page, which can be stored as a file later: (stored as a dict by default)
         yield{
-            "title": response.css("h1.entry-title::text").get(),
-            "date": response.css("p.post-meta span.published::text").get(),
-            "author": response.css("a.vcard.author span.fn::text").get(),
-            "categories": ", ".join(response.css("div.et_post_meta_wrapper p.post-meta a[rel='category tag']::text").getall()), 
+            "title": article.css("h1.entry-title::text").get(),
+            "date": article.css("p.post-meta span.published::text").get(),
+            "author": article.css("a.vcard.author span.fn::text").get(),
+            "categories": ", ".join(article.css("div.et_post_meta_wrapper p.post-meta a[rel='category tag']::text").getall()), 
             # these can later be accessed via the links https://notesfrompoland.com/category/{category}/
 
             # using xpath here to get all the nested element text: response.css doesn't get the nested elements :(
             "content": "\n\n".join(text.strip()
-                                    for text in response.xpath("//div[contains(@class, 'entry-content')]//p[not(ancestor::blockquote)]//text()") # disregard blockquotes --> seperate thing for that
+                                    for text in article.xpath("//div[contains(@class, 'entry-content')]//p[not(ancestor::blockquote)]//text()") # disregard blockquotes --> seperate thing for that
                                     .getall()), # ensure no random empty text
                                     # "div.entry-content p::text"
                                     # by paragraph, by <p> element, otherwise text is seperated by \n too often :)
 
             "quotes": "\n\n".join(text.strip()
-                                    for text in response.xpath("//div[contains(@class, 'entry-content')]//blockquote//p//text()")
+                                    for text in article.xpath("//div[contains(@class, 'entry-content')]//blockquote//p//text()")
                                     .getall())
                                     # "div.entry-content blockquote p::text"
         }

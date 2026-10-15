@@ -101,15 +101,9 @@ ROBOTSTXT_OBEY = False
 
 # this determines how the output is formatted and saved (json, utf8, overwrite existing file)
 FEEDS = {
-    "articles.json": { "format": "json", 
+    "outputs/output.json": { "format": "json", 
                         "encoding": "utf8", 
                         "overwrite" : "True" },
-}
-
-# some sites have bot protection, so we need to impersonate a browser to get the content :/  --> (scrapy-impersonate package)
-DOWNLOAD_HANDLERS = {
-    "http": "scrapy_impersonate.ImpersonateDownloadHandler",
-    "https": "scrapy_impersonate.ImpersonateDownloadHandler",
 }
 
 ## settings.py
@@ -124,5 +118,5 @@ SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
 SELENIUM_DRIVER_ARGUMENTS=['--headless']  
   
 DOWNLOADER_MIDDLEWARES = {
-     'scrapy_selenium.SeleniumMiddleware': 800
+     'scrapy_selenium4.SeleniumMiddleware': 800
      }

@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Output files
-.LearningScrapy/articles.json
+LearningScrapy/outputs/*
