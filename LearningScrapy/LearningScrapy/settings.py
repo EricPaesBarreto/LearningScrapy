@@ -111,10 +111,9 @@ FEEDS = {
 # selenium settings
 
 # For Firefox driver 
-from shutil import which
   
 SELENIUM_DRIVER_NAME = 'firefox'
-SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+SELENIUM_DRIVER_EXECUTABLE_PATH = r"D:\Programs\Tools\geckodriver.exe"
 SELENIUM_DRIVER_ARGUMENTS=['--headless']  
   
 DOWNLOADER_MIDDLEWARES = {
