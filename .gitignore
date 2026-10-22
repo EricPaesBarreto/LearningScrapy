@@ -11,3 +11,7 @@ wheels/
 
 # Output files
 LearningScrapy/outputs/*
+
+# Drivers
+LearningScrapy/LearningScrapy/geckodriver
+LearningScrapy/LearningScrapy/geckodriver.exe

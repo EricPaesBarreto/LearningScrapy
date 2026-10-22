@@ -6,7 +6,7 @@ from scrapy_selenium4 import SeleniumRequest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
-class infscrSpider(scrapy.Spider):
+class FilmsSpider(scrapy.Spider):
     name = "films"
     allowed_domains = ["infiniteajaxscroll.com"]
     start_urls = ["https://infiniteajaxscroll.com/examples/json/"]

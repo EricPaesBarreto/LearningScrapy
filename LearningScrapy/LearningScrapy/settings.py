@@ -78,11 +78,11 @@ DOWNLOAD_DELAY = 1
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
-#HTTPCACHE_EXPIRATION_SECS = 0
-#HTTPCACHE_DIR = "httpcache"
-#HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
+HTTPCACHE_ENABLED = True
+HTTPCACHE_EXPIRATION_SECS = 0
+HTTPCACHE_DIR = "httpcache"
+HTTPCACHE_IGNORE_HTTP_CODES = []
+HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
 # FEED_EXPORT_ENCODING = "utf-8"
@@ -113,7 +113,7 @@ FEEDS = {
 # For Firefox driver 
   
 SELENIUM_DRIVER_NAME = 'firefox'
-SELENIUM_DRIVER_EXECUTABLE_PATH = r"D:\Programs\Tools\geckodriver.exe"
+SELENIUM_DRIVER_EXECUTABLE_PATH = r".\geckodriver" # directory and filename inconsistensies between systems
 SELENIUM_DRIVER_ARGUMENTS=['--headless']  
   
 DOWNLOADER_MIDDLEWARES = {
